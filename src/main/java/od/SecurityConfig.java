@@ -35,12 +35,14 @@ import od.lti.LTIAuthenticationProvider;
 import od.lti.LTIUserDetailsService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.embedded.FilterRegistrationBean;
 import org.springframework.boot.context.embedded.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
@@ -73,7 +75,7 @@ public class SecurityConfig {
     @Autowired private OAuthFilter oAuthFilter;
     @Autowired private LTIUserDetailsService userDetailsService;
     @Autowired private LTIAuthenticationProvider authenticationProvider;
-   
+
     @Bean
     public FilterRegistrationBean oAuthFilterBean() {
       FilterRegistrationBean registrationBean = new FilterRegistrationBean();
@@ -111,7 +113,16 @@ public class SecurityConfig {
   @Configuration
   @ConditionalOnProperty(name="features.saml",havingValue="false")
   public static class HttpBasicConfigurationAdapter extends WebSecurityConfigurerAdapter {
-    
+
+    @Value(value = "${password.admin:admin}")
+    String adminPassword;
+
+    @Value(value = "${password.student:admin}")
+    String studentPassword;
+
+    @Value(value = "${password.instructor:admin}")
+    String instructorPassword;
+
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring()
@@ -149,14 +160,14 @@ public class SecurityConfig {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
       auth
         .inMemoryAuthentication()
-          .withUser("student").password("student").roles("STUDENT")
+          .withUser("student").password(studentPassword).roles("STUDENT")
           .and()
-          .withUser("instructor").password("instructor").roles("INSTRUCTOR")
+          .withUser("instructor").password(instructorPassword).roles("INSTRUCTOR")
           .and()
-          .withUser("admin").password("admin").roles("INSTRUCTOR","ADMIN")
+          .withUser("admin").password(adminPassword).roles("INSTRUCTOR","ADMIN")
           //Test Admin set up for functional testing purposes
           .and()
-          .withUser("test_admin").password("admin").roles("INSTRUCTOR","ADMIN");
+          .withUser("test_admin").password(adminPassword).roles("INSTRUCTOR","ADMIN");
     }
     
     @Primary
