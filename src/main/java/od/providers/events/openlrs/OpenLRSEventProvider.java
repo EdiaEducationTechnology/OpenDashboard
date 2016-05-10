@@ -25,6 +25,7 @@ import od.providers.BaseProvider;
 import od.providers.ProviderData;
 import od.providers.ProviderException;
 import od.providers.ProviderOptions;
+import od.providers.api.PageInfo;
 import od.providers.api.PageWrapper;
 import od.providers.config.DefaultProviderConfiguration;
 import od.providers.config.ProviderConfiguration;
@@ -96,8 +97,7 @@ public class OpenLRSEventProvider extends BaseProvider implements EventProvider 
       events = new LinkedList<Event>(pageWrapper.getContent());
     }
 
-    PageWrapper<EventImpl>.PageInfo page = pageWrapper.getPage();
-    return new PageImpl<>(events, pageable, page != null ? page.getTotalElements() : events.size());
+    return new PageImpl<>(events, pageable, pageWrapper.getPage().getTotalElements() );
 
   }
   
