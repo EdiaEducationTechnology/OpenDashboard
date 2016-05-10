@@ -87,7 +87,7 @@ public class OpenLRSEventProvider extends BaseProvider implements EventProvider 
     
     ParameterizedTypeReference<PageWrapper<EventImpl>> responseType = new ParameterizedTypeReference<PageWrapper<EventImpl>>() {};
     
-    PageWrapper<EventImpl> pageWrapper = restTemplate.exchange(url, HttpMethod.GET, 
+    PageWrapper<EventImpl> pageWrapper = (PageWrapper<EventImpl>) restTemplate.exchange(url, HttpMethod.GET,
         new HttpEntity(createHeadersWithBasicAuth(providerData.findValueForKey("key"), providerData.findValueForKey("secret"))), 
         responseType, urlVariables).getBody();
     log.debug(pageWrapper.toString());
@@ -95,8 +95,9 @@ public class OpenLRSEventProvider extends BaseProvider implements EventProvider 
     if (pageWrapper != null && pageWrapper.getContent() != null && !pageWrapper.getContent().isEmpty()) {
       events = new LinkedList<Event>(pageWrapper.getContent());
     }
-    
-    return new PageImpl<>(events, pageable, pageWrapper.getPage().getTotalElements());
+
+    PageWrapper<EventImpl>.PageInfo page = pageWrapper.getPage();
+    return new PageImpl<>(events, pageable, page != null ? page.getTotalElements() : events.size());
 
   }
   
