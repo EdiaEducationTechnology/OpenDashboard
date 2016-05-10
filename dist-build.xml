@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<project name="Distribution Build" default="dist" basedir=".">
+  <description>
+    This package does an distribution package
+  </description>
+  <!-- VARIABLES -->
+  <property name="package.name" value="opendashboard"/>
+  <property name="build.number" value="0"/>
+  <property name="git.branch" value="origin/master"/>
+  <!-- LOCATIONS -->
+  <property name="package.dir" location="/mnt/packages/"/>
+  <property name="deploy.target" location="/tmp/${package.name}"/>
+  <target name="dist" depends="package,clean">
+  </target>
+  <target name="git.branch">
+    <script language="javascript"><![CDATA[
+                // getting the value
+                var projectBranch = project.getProperty("git.branch");
+		if (projectBranch.indexOf('/') != -1) {
+			projectBranch = projectBranch.substring(projectBranch.lastIndexOf('/')+1);
+		}
+
+                project.setProperty("project.branch", projectBranch);
+
+            ]]></script>
+    <echo message="Current branch: ${project.branch}"/>
+  </target>
+  <target name="package" depends="config">
+    <echo message="Current branch: ${git.branch}"/>
+    <copy tofile="${deploy.target}/webapps/ROOT.war">
+      <fileset dir="target/" includes="*.war"/>
+    </copy>
+    <zip destfile="${package.dir}/${package.name}-${project.branch}-build${build.number}.zip" basedir="${deploy.target}"/>
+    <!-- <zip destfile="${package.dir}/${package.name}-${project.branch}-latest.zip" basedir="${deploy.target}"/> -->
+  </target>
+  <target name="clean">
+    <delete dir="${deploy.target}"/>
+  </target>
+  <target name="config" depends="git.branch">
+  </target>
+</project>
