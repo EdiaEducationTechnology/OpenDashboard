@@ -279,7 +279,7 @@
 					$log.debug(page);
 					$log.debug(size);
 					var p = page || 0;
-		            var s = size || 10;
+		            var s = size || 100;
 		
 				
 					var url = '/api/event/course/'+courseId+'?page='+p+'&size='+s;
