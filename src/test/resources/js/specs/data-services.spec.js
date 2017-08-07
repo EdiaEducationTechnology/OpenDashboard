@@ -696,7 +696,7 @@ describe('the data-services test', function () {
 
         describe('EventService.getEventsForCourse', function () {
             it('should not be equal to the EventService when content does not match in response with page', function () {
-                httpBackend.when('POST', '/api/event/course/123?page=1&size=10').respond({'type': 'ASSIGNMENT',
+                httpBackend.when('POST', '/api/event/course/123?page=1&size=100').respond({'type': 'ASSIGNMENT',
                     'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY', 'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC_FAIL', 'content': 'TEST_CONTENT1'});
 
                 service.getEventsForCourse(prov1, '123', '1')
@@ -738,7 +738,7 @@ describe('the data-services test', function () {
             });
 
             it('should not be equal to the EventService when content does not match in response without page or size', function () {
-                httpBackend.when('POST', '/api/event/course/123?page=0&size=10').respond({'type': 'ASSIGNMENT',
+                httpBackend.when('POST', '/api/event/course/123?page=0&size=100').respond({'type': 'ASSIGNMENT',
                     'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY', 'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC_FAIL', 'content': 'TEST_CONTENT1'});
 
                 service.getEventsForCourse(prov1, '123')
@@ -752,7 +752,7 @@ describe('the data-services test', function () {
             });
 
             it('should be equal to the EventService when everything does match in response with page', function () {
-                httpBackend.when('POST', '/api/event/course/123?page=1&size=10').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
+                httpBackend.when('POST', '/api/event/course/123?page=1&size=100').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
                     'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC', 'content': 'TEST_CONTENT'});
 
                 service.getEventsForCourse(prov1, '123', '1')
@@ -794,7 +794,7 @@ describe('the data-services test', function () {
             });
 
             it('should be equal to the EventService when everything does match in response without page or size', function () {
-                httpBackend.when('POST', '/api/event/course/123?page=0&size=10').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
+                httpBackend.when('POST', '/api/event/course/123?page=0&size=100').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
                     'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC', 'content': 'TEST_CONTENT'});
 
                 service.getEventsForCourse(prov1, '123')
@@ -810,7 +810,7 @@ describe('the data-services test', function () {
 
         describe('EventService.getEventsForUser', function () {
             it('should not be equal to the EventService when content does not match in response with page', function () {
-                httpBackend.when('POST', '/api/event/user/123?page=1&size=10').respond({'type': 'ASSIGNMENT',
+                httpBackend.when('POST', '/api/event/user/123?page=1&size=100').respond({'type': 'ASSIGNMENT',
                     'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY', 'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC_FAIL', 'content': 'TEST_CONTENT1'});
 
                 service.getEventsForUser(prov1, '123', '1')
@@ -852,7 +852,7 @@ describe('the data-services test', function () {
             });
 
             it('should not be equal to the EventService when content does not match in response without page or size', function () {
-                httpBackend.when('POST', '/api/event/user/123?page=0&size=10').respond({'type': 'ASSIGNMENT',
+                httpBackend.when('POST', '/api/event/user/123?page=0&size=100').respond({'type': 'ASSIGNMENT',
                     'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY', 'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC_FAIL', 'content': 'TEST_CONTENT1'});
 
                 service.getEventsForUser(prov1, '123')
@@ -866,7 +866,7 @@ describe('the data-services test', function () {
             });
 
             it('should be equal to the EventService when everything does match in response with page', function () {
-                httpBackend.when('POST', '/api/event/user/123?page=1&size=10').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
+                httpBackend.when('POST', '/api/event/user/123?page=1&size=100').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
                     'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC', 'content': 'TEST_CONTENT'});
 
                 service.getEventsForUser(prov1, '123', '1')
@@ -908,7 +908,7 @@ describe('the data-services test', function () {
             });
 
             it('should be equal to the EventService when everything does match in response without page or size', function () {
-                httpBackend.when('POST', '/api/event/user/123?page=0&size=10').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
+                httpBackend.when('POST', '/api/event/user/123?page=0&size=100').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
                     'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC', 'content': 'TEST_CONTENT'});
 
                 service.getEventsForUser(prov1, '123')
@@ -924,7 +924,7 @@ describe('the data-services test', function () {
 
         describe('EventService.getEventsForCourseAndUser', function () {
             it('should not be equal to the EventService when content does not match in response with page', function () {
-                httpBackend.when('POST', '/api/event/course/123/user/124?page=1&size=10').respond({'type': 'ASSIGNMENT',
+                httpBackend.when('POST', '/api/event/course/123/user/124?page=1&size=100').respond({'type': 'ASSIGNMENT',
                     'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY', 'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC_FAIL', 'content': 'TEST_CONTENT1'});
 
                 service.getEventsForCourseAndUser(prov1, '123', '124', '1')
@@ -966,7 +966,7 @@ describe('the data-services test', function () {
             });
 
             it('should not be equal to the EventService when content does not match in response without page or size', function () {
-                httpBackend.when('POST', '/api/event/course/123/user/124?page=0&size=10').respond({'type': 'ASSIGNMENT',
+                httpBackend.when('POST', '/api/event/course/123/user/124?page=0&size=100').respond({'type': 'ASSIGNMENT',
                     'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY', 'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC_FAIL', 'content': 'TEST_CONTENT1'});
 
                 service.getEventsForCourseAndUser(prov1, '123', '124')
@@ -980,7 +980,7 @@ describe('the data-services test', function () {
             });
 
             it('should be equal to the EventService when everything does match in response with page', function () {
-                httpBackend.when('POST', '/api/event/course/123/user/124?page=1&size=10').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
+                httpBackend.when('POST', '/api/event/course/123/user/124?page=1&size=100').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
                     'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC', 'content': 'TEST_CONTENT'});
 
                 service.getEventsForCourseAndUser(prov1, '123', '124', '1')
@@ -1022,7 +1022,7 @@ describe('the data-services test', function () {
             });
 
             it('should be equal to the EventService when everything does match in response without page or size', function () {
-                httpBackend.when('POST', '/api/event/course/123/user/124?page=0&size=10').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
+                httpBackend.when('POST', '/api/event/course/123/user/124?page=0&size=100').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
                     'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC', 'content': 'TEST_CONTENT'});
 
                 service.getEventsForCourseAndUser(prov1, '123', '124')
@@ -1199,7 +1199,7 @@ describe('the data-services test', function () {
 
         describe('ModelOutputDataService.getModelOutputForCourse', function () {
             it('should not be equal to the ModelOutputDataService when content does not match in response with page', function () {
-                httpBackend.when('POST', '/api/modeloutput/course/123?page=1&size=10').respond({'type': 'ASSIGNMENT',
+                httpBackend.when('POST', '/api/modeloutput/course/123?page=1&size=100').respond({'type': 'ASSIGNMENT',
                     'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY', 'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC_FAIL', 'content': 'TEST_CONTENT1'});
 
                 service.getModelOutputForCourse(prov1, '123', '1')
@@ -1241,7 +1241,7 @@ describe('the data-services test', function () {
             });
 
             it('should not be equal to the ModelOutputDataService when content does not match in response without page or size', function () {
-                httpBackend.when('POST', '/api/modeloutput/course/123?page=0&size=10').respond({'type': 'ASSIGNMENT',
+                httpBackend.when('POST', '/api/modeloutput/course/123?page=0&size=100').respond({'type': 'ASSIGNMENT',
                     'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY', 'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC_FAIL', 'content': 'TEST_CONTENT1'});
 
                 service.getModelOutputForCourse(prov1, '123')
@@ -1255,7 +1255,7 @@ describe('the data-services test', function () {
             });
 
             it('should be equal to the ModelOutputDataService when everything does match in response with page', function () {
-                httpBackend.when('POST', '/api/modeloutput/course/123?page=1&size=10').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
+                httpBackend.when('POST', '/api/modeloutput/course/123?page=1&size=100').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
                     'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC', 'content': 'TEST_CONTENT'});
 
                 service.getModelOutputForCourse(prov1, '123', '1')
@@ -1297,7 +1297,7 @@ describe('the data-services test', function () {
             });
 
             it('should be equal to the ModelOutputDataService when everything does match in response without page or size', function () {
-                httpBackend.when('POST', '/api/modeloutput/course/123?page=0&size=10').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
+                httpBackend.when('POST', '/api/modeloutput/course/123?page=0&size=100').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
                     'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC', 'content': 'TEST_CONTENT'});
 
                 service.getModelOutputForCourse(prov1, '123')
@@ -1313,7 +1313,7 @@ describe('the data-services test', function () {
 
         describe('ModelOutputDataService.getModelOutputForUser', function () {
             it('should not be equal to the ModelOutputDataService when content does not match in response with page', function () {
-                httpBackend.when('POST', '/api/modeloutput/user/123?page=1&size=10').respond({'type': 'ASSIGNMENT',
+                httpBackend.when('POST', '/api/modeloutput/user/123?page=1&size=100').respond({'type': 'ASSIGNMENT',
                     'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY', 'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC_FAIL', 'content': 'TEST_CONTENT1'});
 
                 service.getModelOutputForUser(prov1, '123', '1')
@@ -1355,7 +1355,7 @@ describe('the data-services test', function () {
             });
 
             it('should not be equal to the ModelOutputDataService when content does not match in response without page or size', function () {
-                httpBackend.when('POST', '/api/modeloutput/user/123?page=0&size=10').respond({'type': 'ASSIGNMENT',
+                httpBackend.when('POST', '/api/modeloutput/user/123?page=0&size=100').respond({'type': 'ASSIGNMENT',
                     'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY', 'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC_FAIL', 'content': 'TEST_CONTENT1'});
 
                 service.getModelOutputForUser(prov1, '123')
@@ -1369,7 +1369,7 @@ describe('the data-services test', function () {
             });
 
             it('should be equal to the ModelOutputDataService when everything does match in response with page', function () {
-                httpBackend.when('POST', '/api/modeloutput/user/123?page=1&size=10').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
+                httpBackend.when('POST', '/api/modeloutput/user/123?page=1&size=100').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
                     'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC', 'content': 'TEST_CONTENT'});
 
                 service.getModelOutputForUser(prov1, '123', '1')
@@ -1411,7 +1411,7 @@ describe('the data-services test', function () {
             });
 
             it('should be equal to the ModelOutputDataService when everything does match in response without page or size', function () {
-                httpBackend.when('POST', '/api/modeloutput/user/123?page=0&size=10').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
+                httpBackend.when('POST', '/api/modeloutput/user/123?page=0&size=100').respond({'type': 'ASSIGNMENT', 'key': 'LABEL_ASSIGNMENT_PROVIDERS_KEY',
                     'desc': 'LABEL_ASSIGNMENT_PROVIDERS_DESC', 'content': 'TEST_CONTENT'});
 
                 service.getModelOutputForUser(prov1, '123')
